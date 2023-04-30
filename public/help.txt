@@ -1,0 +1,4 @@
+https://www.youtube.com/watch?v=LdNoGGZd72c
+https://tailwindcss.com/docs/guides/nextjs
+https://www.npmjs.com/package/@react-three/fiber
+https://www.npmjs.com/package/@react-three/drei
