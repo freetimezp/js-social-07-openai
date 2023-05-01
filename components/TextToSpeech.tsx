@@ -39,7 +39,7 @@ const TextToSpeech = () => {
             if (error instanceof Error) {
                 message = error.message;
             }
-            console.log(message);
+            //console.log(message);
         } finally {
             setIsLoading(false);
             setUserText("");
