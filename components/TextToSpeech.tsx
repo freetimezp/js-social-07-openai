@@ -1,10 +1,12 @@
 "use client";
+import { AppContext } from '@/app/context/IsPlayingContext';
 import { sendTextToOpenAI } from '@/utils/sendTextToOpenAI';
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useContext } from 'react';
 
 const TextToSpeech = () => {
     const [userText, setUserText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const { isPlaying, setIsPlaying } = useContext(AppContext);
 
     const synth = typeof window != "undefined" ? window.speechSynthesis : null;
     const voices = synth?.getVoices();
@@ -21,8 +23,11 @@ const TextToSpeech = () => {
         synth?.speak(utterance);
         setIsLoading(true);
 
+        setIsPlaying(true);
+
         utterance.onend = (() => {
             setIsLoading(false);
+            setIsPlaying(false);
         })
     };
 
@@ -49,7 +54,7 @@ const TextToSpeech = () => {
     return (
         <div className='relative top-0 z-50'>
             <form
-                className='absolute top-[800px] left-[50%] space-x-2 pt-2 -translate-x-[50%]'
+                className='absolute -top-[100px] left-[50%] space-x-2 pt-2 -translate-x-[50%]'
                 onSubmit={handleUserText}
             >
                 <input
