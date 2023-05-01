@@ -1,11 +1,19 @@
 "use client";
 import { OrbitControls, SpotLight, useGLTF, useAnimations } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import React, { useEffect, useRef } from 'react';
 import { Vector3 } from 'three';
 
 const Torch = ({ vec = new Vector3(), ...props }) => {
     const light = useRef<THREE.SpotLight>(null);
+    const viewport = useThree(state => state.viewport);
+
+    useFrame((state) => {
+        light.current?.target.position.lerp(
+            vec.set((state.mouse.x * viewport.width) / 2, (state.mouse.y * viewport.width) / 2, 0), 0.1
+        );
+        light.current?.target.updateMatrixWorld();
+    });
 
     return (
         <SpotLight

@@ -10,7 +10,7 @@ const TextToSpeech = () => {
     const voices = synth?.getVoices();
     //console.log(voices);
 
-    const selectedVoices = voices?.find((voice) => voice.name == "Microsoft David - English (United States)");
+    const selectedVoices = voices?.find((voice) => voice.name == "Microsoft Zira - English (United States)");
     //console.log(selectedVoices);
 
     const speak = (textToSpeak: string) => {
