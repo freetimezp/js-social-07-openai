@@ -54,13 +54,13 @@ const TextToSpeech = () => {
     return (
         <div className='relative top-0 z-50'>
             <form
-                className='absolute -top-[100px] left-[50%] space-x-2 pt-2 -translate-x-[50%]'
+                className='absolute -top-[120px] left-[10px] space-x-2 pt-2'
                 onSubmit={handleUserText}
             >
                 <input
                     value={userText}
                     onChange={(e) => setUserText(e.target.value)}
-                    className='bg-transparent w-[510px] border border-[#b00c3f]/80 outline-none rounded-lg
+                    className='bg-transparent sm:w-[550px] w-[290px] border border-[#b00c3f]/80 outline-none rounded-lg
                         placeholder:text-[#b00c3f] p-2 text-[#b00c3f]'
                     placeholder='What do you want to know human?...'
                     type="text"
