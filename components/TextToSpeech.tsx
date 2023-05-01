@@ -1,4 +1,5 @@
 "use client";
+import { sendTextToOpenAI } from '@/utils/sendTextToOpenAI';
 import React, { FormEvent, useState } from 'react';
 
 const TextToSpeech = () => {
@@ -15,7 +16,7 @@ const TextToSpeech = () => {
     const speak = (textToSpeak: string) => {
         const utterance = new SpeechSynthesisUtterance(textToSpeak);
         utterance.voice = selectedVoices!;
-        utterance.rate = 0.8;
+        utterance.rate = 0.5;
 
         synth?.speak(utterance);
         setIsLoading(true);
@@ -25,10 +26,24 @@ const TextToSpeech = () => {
         })
     };
 
-    const handleUserText = (e: FormEvent<HTMLFormElement>) => {
+    const handleUserText = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsLoading(true);
         //console.log(userText);
-        speak(userText);
+
+        try {
+            const message = await sendTextToOpenAI(userText);
+            speak(message);
+        } catch (error) {
+            let message = "";
+            if (error instanceof Error) {
+                message = error.message;
+            }
+            console.log(message);
+        } finally {
+            setIsLoading(false);
+            setUserText("");
+        };
     };
 
     return (
