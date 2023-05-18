@@ -8,7 +8,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export async function GET(request: Request) {
-    return new Response("Hello, Form OpenAI");
+    return new Response("Hello, From OpenAI");
 }
 
 export async function POST(request: Request) {
@@ -20,8 +20,8 @@ export async function POST(request: Request) {
         messages: [{ role: "user", content: userText }]
     });
 
-    const aiMessage = completion.data.choices[0].message;
+    const aiMessage = completion.data.choices[0].message?.content;
     //console.log(aiMessage?.content);
 
-    return NextResponse.json({ message: aiMessage?.content }, { status: 200 });
+    return NextResponse.json({ message: aiMessage }, { status: 200 });
 }
