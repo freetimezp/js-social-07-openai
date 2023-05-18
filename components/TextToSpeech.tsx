@@ -1,6 +1,6 @@
 "use client";
 import { AppContext } from '@/app/context/IsPlayingContext';
-import { sendTextToOpenAI } from '@/utils/sendTextToOpenAI';
+import { sendTextToOpenAi } from '@/utils/sendTextToOpenAI';
 import React, { FormEvent, useState, useContext } from 'react';
 
 export const TextToSpeech = () => {
@@ -37,7 +37,7 @@ export const TextToSpeech = () => {
         //console.log(userText);
 
         try {
-            const message = await sendTextToOpenAI(userText);
+            const message = await sendTextToOpenAi(userText);
             speak(message);
         } catch (error) {
             let message = "";

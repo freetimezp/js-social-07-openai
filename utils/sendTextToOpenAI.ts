@@ -1,4 +1,4 @@
-export const sendTextToOpenAI = async (userText: string): Promise<string> => {
+export const sendTextToOpenAi = async (userText: string): Promise<string> => {
     const response = await fetch("/api/openai", {
         method: "POST",
         headers: {
@@ -6,9 +6,6 @@ export const sendTextToOpenAI = async (userText: string): Promise<string> => {
         },
         body: JSON.stringify({ userText }),
     });
-
     const { message }: { message: string } = await response.json();
-    //console.log(message);
-
     return message;
 };
