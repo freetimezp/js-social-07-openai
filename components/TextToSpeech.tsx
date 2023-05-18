@@ -3,16 +3,16 @@ import { AppContext } from '@/app/context/IsPlayingContext';
 import { sendTextToOpenAI } from '@/utils/sendTextToOpenAI';
 import React, { FormEvent, useState, useContext } from 'react';
 
-const TextToSpeech = () => {
+export const TextToSpeech = () => {
     const [userText, setUserText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const { isPlaying, setIsPlaying } = useContext(AppContext);
 
-    const synth = typeof window != "undefined" ? window.speechSynthesis : null;
+    const synth = typeof window !== "undefined" ? window.speechSynthesis : null;
     const voices = synth?.getVoices();
     //console.log(voices);
 
-    const selectedVoices = voices?.find((voice) => voice.name == "Microsoft Zira - English (United States)");
+    const selectedVoices = voices?.find((voice) => voice.name === "Microsoft Zira - English (United States)");
     //console.log(selectedVoices);
 
     const speak = (textToSpeak: string) => {
@@ -25,10 +25,10 @@ const TextToSpeech = () => {
 
         setIsPlaying(true);
 
-        utterance.onend = (() => {
+        utterance.onend = () => {
             setIsLoading(false);
             setIsPlaying(false);
-        })
+        }
     };
 
     const handleUserText = async (e: FormEvent<HTMLFormElement>) => {
@@ -77,5 +77,3 @@ const TextToSpeech = () => {
         </div>
     );
 }
-
-export default TextToSpeech;

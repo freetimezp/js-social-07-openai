@@ -69,7 +69,7 @@ const Head = () => {
     );
 };
 
-const ChatBotCanvas = () => {
+export const ChatBotCanvas = () => {
     return (
         <Canvas>
             <OrbitControls
@@ -84,5 +84,3 @@ const ChatBotCanvas = () => {
         </Canvas>
     );
 }
-
-export default ChatBotCanvas;
