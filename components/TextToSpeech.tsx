@@ -67,7 +67,7 @@ export const TextToSpeech = () => {
 			<div className="absolute top-3 right-3 ">
 				<Link
 					target="_blank"
-					href={"https://www.youtube.com/@developertak2634"}
+					href={"https://www.youtube.com/watch?v=mKYo6N4ptjk&list=PLaTrkuxDsNd2ZJaQPZjz41mE4KfzSacJR&index=50"}
 				>
 					<Image src={yt} alt="yt" height={50} width={50} />
 				</Link>
