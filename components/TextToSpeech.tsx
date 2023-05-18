@@ -1,6 +1,6 @@
 "use client";
 import { AppContext } from "../app/context/IsPlayingContext";
-import { sendTextToOpenAi } from "@/utils/sendTextToOpenai";
+import { sendTextToOpenAi } from "../utils/sendTextToOpenAi";
 import React, { FormEvent, useContext, useState } from "react";
 import yt from "../public/yt.webp";
 import Link from "next/link";
